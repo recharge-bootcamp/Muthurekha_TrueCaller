@@ -1,0 +1,26 @@
+use bootcamp; 
+
+drop table tc_phonebook;
+
+CREATE TABLE tc_phonebook(phone_book_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+ username VARCHAR(16) UNIQUE NOT NULL,
+ email VARCHAR(255) NULL,
+  password VARCHAR(32) NOT NULL,
+  created_time TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP
+  );
+
+drop table tc_contacts;
+
+CREATE TABLE tc_contacts (
+   contact_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+   phone_book_id INT NOT NULL,
+   contact_name VARCHAR(50) NOT NULL,
+   contact_ph_no varchar(50) NOT NULL,
+   contact_description VARCHAR(200) NOT NULL,
+   contact_location  VARCHAR(200) NOT NULL,
+   created_time TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+	FOREIGN KEY (phone_book_id)
+      REFERENCES tc_phonebook(phone_book_id)
+  );
+ 
+alter table tc_contacts AUTO_INCREMENT=1001;
