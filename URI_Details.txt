@@ -1,5 +1,0 @@
-http://localhost:8080/TrueCaller/webapi/user/mmrekha/contacts   -- URI to display the USER PB Contacts
-
-http://localhost:8080/TrueCaller/webapi/contacts/8065456300  --- To Fetch Contact details of a PHNO
-
-http://localhost:8080/TrueCaller/webapi/contacts/mmrekha/addContacts/ --- To Add Contacts for a User(POST)
