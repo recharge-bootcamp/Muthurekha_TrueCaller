@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- <meta charset="ISO-8859-1"> -->
+<title>TrueCaller Client</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script language="javascript">
+    var xmlhttp;
+    function init() {
+    	alert("Started Init");
+       // put more code here in case you are concerned about browsers that do not provide XMLHttpRequest object directly
+       xmlhttp = new XMLHttpRequest();
+    }
+    function getdetails() {
+    	alert("Started Init");
+        var empno = document.getElementById("empno");
+        var url = "http://localhost:8080/TrueCaller/webapi/contacts/" + phoneno.value;
+        xmlhttp.open('GET',url,true);
+        xmlhttp.send(null);
+        xmlhttp.onreadystatechange = function() {
+
+               var phoneNo =  document.getElementById("phoneno");
+               var email =  document.getElementById("email");
+               if (xmlhttp.readyState == 4) {
+                  if ( xmlhttp.status == 200) {
+                       var det = eval( "(" +  xmlhttp.responseText + ")");
+                       if (det.username > 0 ) {
+                          email.value = det.email;
+                          username.value = det.username;
+                          description.value=det.contact_description;
+                       }
+                       else {
+                           empname.value = "";
+                           username.value ="";
+                           description.value=;
+                           alert("Invalid Employee ID");
+                       }
+                 }
+                 else
+                       alert("Error ->" + xmlhttp.responseText);
+              }
+        };
+    }
+  </script>
+</head>
+<body  onload="init()">
+   <h1>TrueCaller Service </h1>
+   <table>
+   <tr>
+       <td>Enter PhoneNumber :  </td>
+       <td><input type="text"  id="phoneno" size="20"/> </td>
+   </tr>
+   <tr>
+       <td>Enter Email:  </td>
+       <td><input type="text" id="email" size="50"/>  <input type="button" value="Get Details" onclick="getdetails()"/>
+   </tr>
+
+   <tr>
+       <td>User Name : </td>
+       <td><input type="text" readonly="true" id="uname" size="50"/> </td>
+   </tr>
+      <tr>
+       <td>Contact Description: </td>
+       <td><input type="text" readonly="true" id="description" size="50"/> </td>
+   </tr>
+   </table>
+  </body>
+
+</html>
